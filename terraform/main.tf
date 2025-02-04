@@ -48,6 +48,12 @@ resource "google_container_node_pool" "primary_pool" {
       "pool" = "primary"
     }
     tags = ["primary-pool"]
+
+    # taint {
+    #   key    = "primary"
+    #   value  = "true"
+    #   effect = "NO_SCHEDULE"  # Prevents scheduling unless tolerated
+    # }
   }
 }
 
@@ -70,6 +76,12 @@ resource "google_container_node_pool" "preemptible_pool" {
       "pool" = "preemptible"
     }
     tags = ["preemptible-pool"]
+
+    # taint {
+    #   key    = "preemptible"
+    #   value  = "true"
+    #   effect = "NO_SCHEDULE"  # Prevents scheduling unless tolerated
+    # }
   }
 }
 
